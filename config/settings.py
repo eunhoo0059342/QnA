@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 내가 만든 app
     'account',
+    'qna',
 ]
 
 MIDDLEWARE = [

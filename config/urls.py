@@ -17,8 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# 전체적인 프로젝트에서 관리하는 url
+# 우리의 정책 - 앱별로 urls.py를 따로 관리하기로 했다.
 
 urlpatterns = [
+    #장고에서 제공하는 기능
     path('admin/', admin.site.urls),
-    path('account/', include('account.urls'))
+    # account앱(회원,로그인)에서 url를 관리 => include
+    path('account/', include('account.urls')),
+    # qna앱(질문게시판 - 메인)에서 url를 관리 => include
+    # 메인페이지는 도메인까지만 입력해도 바로 화면 떠야한다. => Url를 ""로 만들기
+    path('', include('qna.urls'))
+
 ]
