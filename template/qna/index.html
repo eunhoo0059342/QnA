@@ -8,10 +8,68 @@
 <body>
     <h1>QnA main_page</h1>
     <!-- 로그인페이지 링크 <a href="/url"> -> account앱 -->
-        <a href="/account/login">Login</a>
+    <a href="/account/login">Login</a>
     <!-- 글쓰기 페이지 링크 <a href="/url">-> qna앱 -->
-        <a href="/write">
-            write
-        </a>
+    <a href="/write">write</a>
+
+    <!-- 작성한 글의 목록을 보여주기 - django에서 응답한 데이터를 가져오기 
+    => 템플릿언어
+
+    -->
+   
+    <!--  객체에서 속성꺼내느 방법 => 인스턴스명.속성명 
+     제목, 작성자, 조회수, 생성일자 출력해서 한줄씩 출력하기 
+    TODO: 제목을 누르면 상세페이지로 이동해보기
+    
+    표 => 행(줄)과 열(컬럼)
+    <table>
+        # 컬럼명 -> table head
+        <thead>
+            # table row
+            <tr>
+                <th>컬러명1</th>
+                <th>컬러명2</th>
+                <th>컬러명3</th>
+            </tr>
+        </thead>
+        # 실제 내용 -> table body
+        <tbody>
+            <tr>
+                <td>내용1</td>
+                <td>내용2</td>
+                <td>내용3</td>
+                <td>내용4</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    -->
+
+    <!--  제목, 작성자, 조회수, 생성일자 테이블만들기 -->
+    <table>
+        <thead>
+            <tr>
+                <th>title</th>
+                <th>wirter</th>
+                <th>views</th>
+                <th>date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 행들이 반복해서 데이터를 뽑기 th와 갯수를 맞춰서 td를 생성하기 -->
+            
+             {% for d in data %}
+                <tr>
+                    <td>{{d.title}}</td>
+                    <td>{{d.writer}}</td>
+                    <td>{{d.views}}</td>
+                    <td>{{d.created_at}}</td>
+                </tr>
+             {% endfor %}
+        </tbody>
+    </table>
+
+    
 </body>
 </html>

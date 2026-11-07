@@ -204,6 +204,8 @@ git commit -m "한줄메세지"
 추천메세지 first init
         project init
 
+git commit -m "feat: 메인페이지 및 질문 Question 작성 기능"
+
 git commit
 - 리눅스 파일을 작성하는 화면(마우스는 안통하고, 키보드로만 가능)
 - 'i' insert모드 작성하기
@@ -238,6 +240,4 @@ class 모델이름(models.Model):
     writer = models.ForeignKey(User, related_name='writer_questions')
 
 #TODO 삭제정책 결정해오기~~~
-
-
 

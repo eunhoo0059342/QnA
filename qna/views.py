@@ -10,7 +10,22 @@ from .models import Question
 #   return render(request, "파일경로")  -> html 그리기!
 
 def main(request):
-    return render(request, 'qna/index.html')
+    # 질문게시글을 전체를 불러오기 -> DB
+    # 모델이름.objects.all() 
+    db = Question.objects.all()
+    
+    # 데이터를 html에다가 응답 Response를 하고 싶다. => 딕셔너리(JS에서는 json)형태로 전달
+    # 딕셔너리 = {
+    #  '전달할 데이터이름': 전달할 데이터
+    # }
+    dict = {
+        'data':db
+    }
+
+    # 찐 전달하기
+    # retrun render(request, "처리할 Html경로", 응답할 딕셔너리)
+
+    return render(request, 'qna/index.html', dict)
 
 
 
