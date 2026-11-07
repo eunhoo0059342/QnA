@@ -74,3 +74,9 @@ def create(request):
         # DB에 저장하기 Save
         new_q.save()
         return redirect('write')
+
+# 다시 목록페이지로 redirect 
+def delete(request, q_id):
+    target = Question.objects.get(id=q_id)
+    target.delete()
+    return redirect('main')
