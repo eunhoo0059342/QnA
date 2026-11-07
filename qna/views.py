@@ -27,6 +27,18 @@ def main(request):
 
     return render(request, 'qna/index.html', dict)
 
+# 상세페이지 처리하는 함수
+# - 게시글DB에서 내가 원하는 q_id를 갖는 게시글을 콕 가져오기
+# => 변수 = 모델이름.objects.get(id=) (객체타입)
+# - template안의 qna/detail.html에다가 응답하기
+# => 응답할때 딕셔너리형태로 만들어주기
+# => html을 그려주기 (render)
+def detail(request, q_id):
+    target = Question.objects.get(id=q_id)
+    dict = {
+        'q':target
+    }
+    return render(request, 'qna/detail.html', dict)
 
 
 

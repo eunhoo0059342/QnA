@@ -57,11 +57,14 @@
             </tr>
         </thead>
         <tbody>
-            <!-- 행들이 반복해서 데이터를 뽑기 th와 갯수를 맞춰서 td를 생성하기 -->
+            <!-- 행들이 반복해서 데이터를 뽑기 th와 갯수를 맞춰서 td를 생성하기 
+            제목을 눌렀을때 상세페이지로 이동하는 링크를 걸어주세요. 
+            <a href="링크">링크걸 글자</a>
+            -->
             
              {% for d in data %}
                 <tr>
-                    <td>{{d.title}}</td>
+                    <td><a href="/qna/detail/{{d.id}}">{{d.title}}</a></td>
                     <td>{{d.writer}}</td>
                     <td>{{d.views}}</td>
                     <td>{{d.created_at}}</td>

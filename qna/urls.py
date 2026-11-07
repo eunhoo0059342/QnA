@@ -9,4 +9,7 @@ urlpatterns = [
     path('', views.main, name='main'),
     path('write', views.write, name='write'),
     path('a', views.create, name='create'),
+    # 상세페이지url 생성하기 -> 갈때 어떤 게시글 id값(고유값)을 같이 넘겨주기/
+    # qna/detail/<int:id변수이름>
+    path('qna/detail/<int:q_id>', views.detail, name='detail'),
 ]
