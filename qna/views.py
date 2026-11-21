@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 # from 파일 위치
-from .models import Question
+from .models import Question, Answer
 
 
 # Create your views here.
@@ -104,3 +104,22 @@ def update(request, q_id):
     target.text = request.POST.get('text')
     target.save()
     return redirect(detail, target.id)
+
+def create_a(request, q_id):
+    new_target = Answer()
+    new_target.writer = request.user
+    new_target.question = Question.objects.get(id=q_id)
+    new_target.text = request.POST.get('text')
+    new_target.save()
+    return redirect(detail, q_id)
+
+
+
+
+
+
+
+
+
+
+
