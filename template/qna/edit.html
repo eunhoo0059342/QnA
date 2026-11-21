@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+
+</head>
+<body>
+    <!-- 입력할수 있는 구역. = 안에 적힌 내용을 전송(djagno)
+    input들을 모아놓은 구역 = form 
+    설치하기       : https://getbootstrap.com/docs/6.0/getting-started/install/ CDN 찾기
+    form example : https://getbootstrap.com/docs/6.0/forms/overview/ Form Overview 에서 첫번째 코드
+
+    <form action="전송할 url" method="POST/GET">
+        제목    <- 짧은글 <input type="text">
+        작성자  <- 짧은글 <input type="text">
+        내용    <- 긴글 <textarea></texarea>
+        ------------------------
+        조회수 X <- 내가 작성하면 안됨.
+        생성일자 X <- 내가 작성하면 안됨.
+        수정일자 X <- 내가 작성하면 안됨.
+
+    -->
+    <div class="container">
+        <!-- action="db를 수정하는 url"로 POST방식으로 데이터를 전달하기 -->
+        <form action="/update/{{q.id}}" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">제목</label>
+                <!-- Input안에다가 값을 추가할때 value 속성안에다가 넣어주면 됩니다. -->
+                <input type="text" name="title" value="{{q.title}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">작성자</label>
+                <!-- 작성한 유저 들어가도록 하기 -->
+                <input type="text" name="writer" value="{{q.writer}}" class="form-control" id="exampleInputPassword1" disabled value="{{user}}">
+            </div>
+            <div class="mb-3 form-field">
+                <label for="exampleFormControlTextarea1" class="form-label">본문</label>
+                <!-- textarea는 태그 사이에다가 value값 추가 -->
+                <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="3">{{q.text}}</textarea>
+            </div>
+            <button type="submit" class="btn-solid theme-primary">Submit</button>
+        </form>
+    </div>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+
+    
+</body>
+</html>

@@ -13,4 +13,9 @@ urlpatterns = [
     # qna/detail/<int:id변수이름>
     path('qna/detail/<int:q_id>', views.detail, name='detail'),
     path('delete/<int:q_id>', views.delete, name='delete'),   
+    # 수정페이지로 가는 url 생성하기
+    path('edit/<int:q_id>', views.edit, name='edit'),
+    # DB를 수정하는 url를 생성하기
+    path('update/<int:q_id>', views.update, name='update'),
+    
 ]

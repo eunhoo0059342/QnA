@@ -80,3 +80,27 @@ def delete(request, q_id):
     target = Question.objects.get(id=q_id)
     target.delete()
     return redirect('main')
+
+# 수정페이지(html) 연결(render)
+# - write.html 새로운 게시글 작성 ->기존데이터는 없어도 된다.
+# - edit.html 기존의 게시글을 새로운 내용으로 바꾸기 -> 기존데이터가 필요하다.
+def edit(request, q_id):
+    target = Question.objects.get(id=q_id)
+    # 데이터를 응답으로 전달할때 => 딕셔너리타입 (Json)
+    dict = {
+        'q' : target
+        }    
+    return render(request, 'qna/edit.html', dict)
+# DB를 수정하는 함수
+# - 수정한 게시글의  상세페이지로 이동하기
+def update(request, q_id):
+    target = Question.objects.get(id=q_id)
+    # request.POST : 전달받은 데이터 딕셔너리
+    # - 인덱싱: 딕셔너리['key'] : 반드시 들어오는 값에만
+    # - get  :  딕셔너리.get("key")
+    # ** form태그로 넘긴 딕셔너리의 key는 input태그의 name 속성값
+    # target객체의 제목을 POST로 받은 내용으로 수정하기(저장하기, 덮어쓰기)
+    target.title = request.POST.get('title')
+    target.text = request.POST.get('text')
+    target.save()
+    return redirect(detail, target.id)

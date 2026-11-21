@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>질문</h1>
     <p>제목: {{q.title}}</p>
     <p>작성자: {{q.writer}}</p>
     <p>조회수: {{q.views}}</p>
@@ -14,5 +15,10 @@
 
     <!-- 삭제 링크 -->
      <a href="/delete/{{q.id}}">삭제</a>
+    <!-- 수정 링크 -->
+     <a href="/edit/{{q.id}}">수정</a>
+
+    <!-- 답글달기 -->
+
 </body>
 </html>
