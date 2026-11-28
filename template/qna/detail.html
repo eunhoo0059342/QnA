@@ -28,7 +28,18 @@
             <textarea name="text" rows="6" placeholder="답글을 작성해주세요."></textarea>
             <button type="submit">답글 작성</button>
          </form>
-        
     </div>
+
+    <!-- 답글 목록 -------------------------------->
+     <div class="answer_list">
+        {% for a in ans %}
+        <div class="answer_item">
+            <!-- 작성자 작성일자 작성내용-->
+            <p>{{a.writer}}</p>
+            <p>{{a.created_at}}</p>
+            <p>{{a.text}}</p>
+         </div>
+        {% endfor %}
+     </div>
 </body>
 </html>

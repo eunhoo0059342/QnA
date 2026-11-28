@@ -34,9 +34,17 @@ def main(request):
 # => 응답할때 딕셔너리형태로 만들어주기
 # => html을 그려주기 (render)
 def detail(request, q_id):
+    # all 전체
+    # get 1개만 가져올때
     target = Question.objects.get(id=q_id)
+    # 답글도 뽑아서 전달하기
+    # => 해당 게시글에 작성된 댓글들을 가져오기 => filter(질문=찾는질문객체)
+    target_answers = Answer.objects.filter(question=target)
+
+    
     dict = {
-        'q':target
+        'q':target,
+        'ans':target_answers,
     }
     return render(request, 'qna/detail.html', dict)
 
