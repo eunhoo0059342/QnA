@@ -17,5 +17,8 @@ urlpatterns = [
     path('edit/<int:q_id>', views.edit, name='edit'),
     # DB를 수정하는 url를 생성하기
     path('update/<int:q_id>', views.update, name='update'),
-    path('answer/<int:q_id>/create', views.create_a, name='create_a')
+    # 답글 생성하는 url :질문 id필요하다.
+    path('answer/<int:q_id>/create', views.create_a, name='create_a'),
+    # 답글 삭제하는 url :답글 id 필요하다(질문id 필요없다.)
+    path('answer/delete/<int:a_id>', views.delete_a, name='delete_a'),
 ]

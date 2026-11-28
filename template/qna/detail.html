@@ -12,12 +12,13 @@
     <p>조회수: {{q.views}}</p>
     <p>작성일자: {{q.created_at}}</p>
     <p>내용: {{q.text}}</p>
-
-    <!-- 삭제 링크 -->
-     <a href="/delete/{{q.id}}">삭제</a>
-    <!-- 수정 링크 -->
-     <a href="/edit/{{q.id}}">수정</a>
-
+    <!-- 수정과 삭제링크는 작성자(질문의 작성)와 로그인한 유저(request.user)가 같아야지만 보이게 하기 => Django-->
+    {% if q.writer == request.user %}
+        <!-- 삭제 링크 -->
+        <a href="/delete/{{q.id}}">삭제</a>
+        <!-- 수정 링크 -->
+        <a href="/edit/{{q.id}}">수정</a>
+    {% endif %}
     <!-- 답글달기 ---------------------------------->
     <div class="answer">
         <!-- 현재 로그인한 유저 id => 장고 request.user -->
@@ -38,6 +39,14 @@
             <p>{{a.writer}}</p>
             <p>{{a.created_at}}</p>
             <p>{{a.text}}</p>
+            <!-- 각 답글마다 수정삭제버튼(링크) 만들기 
+            임시경로 # 
+            -->
+            <!-- 수정과 삭제링크는 작성자와 로그인한 유저가 같아야지만 보이게 하기 => Django-->
+            {% if a.writer == request.user %}
+                <!-- <a href="/edit/{{a.id}}">edit</a> -->
+                <a href="/answer/delete/{{a.id}}">delete</a>
+            {% endif %}
          </div>
         {% endfor %}
      </div>

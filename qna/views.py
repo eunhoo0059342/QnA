@@ -122,8 +122,12 @@ def create_a(request, q_id):
     return redirect(detail, q_id)
 
 
-
-
+def delete_a(request, a_id):
+    target = Answer.objects.get(id=a_id)
+    # 삭제전에 리다이렉트할 q id를 변수에 저장
+    target_q_id = target.question.id
+    target.delete()
+    return redirect(detail, target_q_id)
 
 
 

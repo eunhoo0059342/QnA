@@ -94,6 +94,10 @@ password : 1234
 username : apro_p
 password : apro1234
 
+username : tester1
+password : 코딩1234
+
+
 
 # 로그인/로그아웃 구현하기
 - account App에서 url 생성해서 하기
